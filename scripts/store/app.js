@@ -14,6 +14,7 @@ else
 {
 	GetOption( {
 		'button-app': true,
+		'button-protondb': true,
 		'button-pcgw': true,
 		'link-subid': true,
 		'online-stats': true,
@@ -136,6 +137,51 @@ else
 				const span = document.createElement( 'span' );
 				span.className = 'social_account';
 				span.textContent = _t( 'view_on_pcgamingwiki' );
+				link.append( span );
+
+				lastLinkBar.insertAdjacentElement( 'afterend', link );
+			}
+		}
+
+		if( items[ 'button-protondb' ] )
+		{
+			const container = document.querySelector( '.apphub_OtherSiteInfo' );
+
+			if( container )
+			{
+				const link = document.createElement( 'a' );
+				link.className = 'btnv6_blue_hoverfade btn_medium btn_steamdb';
+				link.href = 'https://www.protondb.com/app/' + GetCurrentAppID();
+
+				const element = document.createElement( 'span' );
+				element.dataset.tooltipText = _t( 'view_on_protondb' );
+				link.appendChild( element );
+
+				const image = document.createElement( 'img' );
+				image.className = 'ico16';
+				image.src = GetLocalResource( 'icons/protondb.svg' );
+
+				element.appendChild( image );
+
+				container.insertBefore( link, container.firstChild );
+				container.insertBefore( document.createTextNode( ' ' ), link.nextSibling );
+			}
+
+			const lastLinkBar = document.querySelector( '#appDetailsUnderlinedLinks .linkbar:last-child' );
+
+			if( lastLinkBar )
+			{
+				const link = document.createElement( 'a' );
+				link.className = 'linkbar linkbar_steamdb';
+				link.href = 'https://www.protondb.com/app/' + GetCurrentAppID();
+
+				const image = document.createElement( 'img' );
+				image.src = GetLocalResource( 'icons/protondb.svg' );
+				link.append( image );
+
+				const span = document.createElement( 'span' );
+				span.className = 'social_account';
+				span.textContent = _t( 'view_on_protondb' );
 				link.append( span );
 
 				lastLinkBar.insertAdjacentElement( 'afterend', link );
